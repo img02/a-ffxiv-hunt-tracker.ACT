@@ -50,20 +50,25 @@ namespace UFHT_Plugin
             this.label1 = new System.Windows.Forms.Label();
             this.UFHT_DIR_PATH = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.usageInformation = new System.Windows.Forms.Label();
+            this.gitHubLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
             // 
+            this.label1.AccessibleName = "UFHT Directory Path Title";
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(22, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 17);
+            this.label1.Size = new System.Drawing.Size(160, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "UFHT Exe Path:";
+            this.label1.Text = "UFHT Directory Path:";
             // 
             // UFHT_DIR_PATH
             // 
+            this.UFHT_DIR_PATH.AccessibleDescription = "Paste in the directory for ufht-UI.exe here";
+            this.UFHT_DIR_PATH.AccessibleName = "UFHT Directory Path";
             this.UFHT_DIR_PATH.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.UFHT_DIR_PATH.Location = new System.Drawing.Point(26, 47);
             this.UFHT_DIR_PATH.Name = "UFHT_DIR_PATH";
@@ -81,15 +86,44 @@ namespace UFHT_Plugin
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // usageInformation
+            // 
+            this.usageInformation.AccessibleDescription = "Type \'/ufht\' into chat to open UFHT.";
+            this.usageInformation.AccessibleName = "How To Use";
+            this.usageInformation.AutoSize = true;
+            this.usageInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usageInformation.Location = new System.Drawing.Point(26, 114);
+            this.usageInformation.Name = "usageInformation";
+            this.usageInformation.Size = new System.Drawing.Size(676, 68);
+            this.usageInformation.TabIndex = 3;
+            this.usageInformation.Text = "Type \'/ufht\' into chat to open UFHT.\r\n\r\nRequires chat log error messages to be en" +
+    "abled.\r\nEnable via the cog on the bottom right of the chat box -> Log Filters ->" +
+    " Announcements -> Error Messages\r\n";
+            // 
+            // gitHubLink
+            // 
+            this.gitHubLink.AccessibleDescription = "Link to the Plugins GitHub Page";
+            this.gitHubLink.AccessibleName = "GitHub Link";
+            this.gitHubLink.AutoSize = true;
+            this.gitHubLink.Location = new System.Drawing.Point(26, 194);
+            this.gitHubLink.Name = "gitHubLink";
+            this.gitHubLink.Size = new System.Drawing.Size(40, 13);
+            this.gitHubLink.TabIndex = 4;
+            this.gitHubLink.TabStop = true;
+            this.gitHubLink.Text = "GitHub";
+            this.gitHubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.gitHubLink_LinkClicked);
+            // 
             // UFHTPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gitHubLink);
+            this.Controls.Add(this.usageInformation);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.UFHT_DIR_PATH);
             this.Controls.Add(this.label1);
             this.Name = "UFHTPlugin";
-            this.Size = new System.Drawing.Size(686, 384);
+            this.Size = new System.Drawing.Size(725, 395);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +133,8 @@ namespace UFHT_Plugin
 
         private TextBox UFHT_DIR_PATH;
         private Button button1;
+        private Label usageInformation;
+        private LinkLabel gitHubLink;
         private System.Windows.Forms.Label label1;
 
 
@@ -214,23 +250,13 @@ namespace UFHT_Plugin
             process.StartInfo.FileName = this.UFHT_DIR_PATH.Text + "\\ufht-UI.exe";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             process.StartInfo.WorkingDirectory = UFHT_DIR_PATH.Text;
-
-            /*process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.RedirectStandardOutput = true;*/
-            
             process.Start();
             
-            /*
-            Thread.Sleep(500);
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-
-            Debug.WriteLine(output);
-            Debug.WriteLine("VVVVVVVVVVVV\n");
-            Debug.WriteLine(error);
-            Debug.WriteLine("^^^^^^^^^^^^^\n");*/
         }
-        
+
+        private void gitHubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/imaginary-png/a-ffxiv-hunt-tracker.ACT");
+        }
     }
 }
