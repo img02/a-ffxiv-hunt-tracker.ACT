@@ -73,37 +73,37 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="unused\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="CustomConverters\FileToBitmapConverter.cs" />
-    <Compile Include="HotkeyCommands\Commands.cs" />
-    <Compile Include="HotkeyCommands\GlobalHotkeyManager.cs" />
-    <Compile Include="HotkeyCommands\Hotkey.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="unused\AssemblyInfo.cs" />
+    <Compile Include="unused\CustomConverters\FileToBitmapConverter.cs" />
+    <Compile Include="unused\HotkeyCommands\Commands.cs" />
+    <Compile Include="unused\HotkeyCommands\GlobalHotkeyManager.cs" />
+    <Compile Include="unused\HotkeyCommands\Hotkey.cs" />
+    <Compile Include="unused\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PluginSample.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsWindow\HotkeyWindow.xaml.cs">
+    <Compile Include="unused\SettingsWindow\HotkeyWindow.xaml.cs">
       <DependentUpon>HotkeyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SettingsWindow\SettingsWindow.xaml.cs">
+    <Compile Include="unused\SettingsWindow\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\InfoSection\InfoSectionControl.xaml.cs">
+    <Compile Include="unused\UserControls\InfoSection\InfoSectionControl.xaml.cs">
       <DependentUpon>InfoSectionControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MapSection\MainMapControl.xaml.cs">
+    <Compile Include="unused\UserControls\MapSection\MainMapControl.xaml.cs">
       <DependentUpon>MainMapControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserSettings\Settings.cs" />
-    <Compile Include="UserSettings\SettingsManager.cs" />
+    <Compile Include="unused\UserSettings\Settings.cs" />
+    <Compile Include="unused\UserSettings\SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="PluginSample.resx">
@@ -111,19 +111,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <Page Include="unused\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="unused\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingsWindow\HotkeyWindow.xaml">
+    <Page Include="unused\SettingsWindow\HotkeyWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingsWindow\SettingsWindow.xaml">
+    <Page Include="unused\SettingsWindow\SettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -131,27 +131,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\InfoSection\InfoSectionControl.xaml">
+    <Page Include="unused\UserControls\InfoSection\InfoSectionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\MapSection\MainMapControl.xaml">
+    <Page Include="unused\UserControls\MapSection\MainMapControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="unused\app.manifest" />
+    <None Include="unused\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="unused\Help.txt" />
+    <Content Include="unused\SS.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\untitled-ffxiv-hunt-tracker\untitled_ffxiv_hunt_tracker.csproj">
       <Project>{aed17f7e-beb8-4c8d-aba0-23e52d802397}</Project>
       <Name>untitled_ffxiv_hunt_tracker</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.manifest" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Help.txt" />
-    <Content Include="SS.ico" />
   </ItemGroup>
 </Project>

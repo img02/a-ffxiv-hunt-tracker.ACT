@@ -53,31 +53,33 @@ namespace ACT_Plugin
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.UFHT_EXE_PATH = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(434, 13);
+            this.label1.Size = new System.Drawing.Size(124, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "This is the user interface that appears as a new tab under the Plugins tab.  [REP" +
-    "LACE ME]";
+            this.label1.Text = "UFHT Exe Path:";
             // 
-            // textBox1
+            // UFHT_EXE_PATH
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(431, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Sample TextBox that has its value stored to the settings file automatically.";
+            this.UFHT_EXE_PATH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UFHT_EXE_PATH.Location = new System.Drawing.Point(26, 47);
+            this.UFHT_EXE_PATH.Name = "UFHT_EXE_PATH";
+            this.UFHT_EXE_PATH.Size = new System.Drawing.Size(431, 26);
+            this.UFHT_EXE_PATH.TabIndex = 1;
+            this.UFHT_EXE_PATH.Text = "Shift + Right Click -> Copy as Path, and paste here";
+            this.UFHT_EXE_PATH.TextChanged += new System.EventHandler(this.UFHT_EXE_PATH_TextChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(232, 226);
+            this.button1.Location = new System.Drawing.Point(556, 328);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -90,7 +92,7 @@ namespace ACT_Plugin
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.UFHT_EXE_PATH);
             this.Controls.Add(this.label1);
             this.Name = "PluginSample";
             this.Size = new System.Drawing.Size(686, 384);
@@ -101,49 +103,22 @@ namespace ACT_Plugin
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox UFHT_EXE_PATH;
         private Button button1;
         private System.Windows.Forms.Label label1;
 
 
         #endregion
-        private Window testWindow;
-        private UserControl1 userControl;
+
 
         public PluginSample()
         {
             InitializeComponent();
-
-            userControl = new UserControl1();
-            testWindow = new Window
-            {
-                WindowStyle = WindowStyle.None,
-				Content = userControl,
-				Visibility = Visibility.Hidden,
-				Height = 500,
-				Width = 500
-            };
-
-            //StartUFHT_Program();
-
-            //testWindow = new MainWindow();
-
         }
 
         Label lblStatus;    // The status label that appears in ACT's Plugin tab
-        string settingsFile = Path.Combine(ActGlobals.oFormActMain.AppDataFolder.FullName, "Config\\PluginSample.config.xml");
+        string settingsFile = Path.Combine(ActGlobals.oFormActMain.AppDataFolder.FullName, "Config\\UFHT.config.xml");
         SettingsSerializer xmlSettings;
-
-        /*
-         *
-         * NEED TO GET EXE LOCATION,
-         * THIS WILL ALLOW THE USER TO PUT THEIR OWN LOCATION
-         * AND RELY ON THE EXTERNAL STANDALONE APPLICATION I ALREADY MADE
-         *
-         * EASIER THAN BOTHERING TO REMAKE PRORGAM IN WINFORMS
-         * OR TRYING TO GET THE WPF STUFF TO WORK WITH WINFORMS
-         *
-         */
 
         #region IActPluginV1 Members
         public void InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
@@ -154,21 +129,15 @@ namespace ACT_Plugin
             xmlSettings = new SettingsSerializer(this); // Create a new settings serializer and pass it this instance
             LoadSettings();
 
-            // Create some sort of parsing event handler.  After the "+=" hit TAB twice and the code will be generated for you.
-            ActGlobals.oFormActMain.AfterCombatAction += new CombatActionDelegate(oFormActMain_AfterCombatAction);
+            lblStatus.Text = "Plugin Started <^owo^>";
+
             ActGlobals.oFormActMain.OnLogLineRead += OFormActMain_OnLogLineRead;
-
-            //start session loop here;
-            //for pos data.
-
-            lblStatus.Text = "Plugin Started";
         }
-
         private void OFormActMain_OnLogLineRead(bool isImport, LogLineEventArgs logInfo)
         {
 
             var rg = new Regex(@"^\[.*\] ChatLog 00:003C::The command /ufht does not exist.");
-            
+
             if (rg.IsMatch(logInfo.logLine))
             {
                 Debug.Write($"\n==============================================\n" +
@@ -177,28 +146,23 @@ namespace ACT_Plugin
                 StartUFHT_Program();
             }
 
-            // Debug.WriteLine(logInfo.logLine);
+            Debug.WriteLine(logInfo.logLine);
         }
 
         public void DeInitPlugin()
         {
             // Unsubscribe from any events you listen to when exiting!
-            ActGlobals.oFormActMain.AfterCombatAction -= oFormActMain_AfterCombatAction;
+            ActGlobals.oFormActMain.OnLogLineRead -= OFormActMain_OnLogLineRead;
 
             SaveSettings();
             lblStatus.Text = "Plugin Exited";
         }
         #endregion
 
-        void oFormActMain_AfterCombatAction(bool isImport, CombatActionEventArgs actionInfo)
-        {
-            throw new NotImplementedException();
-        }
-
         void LoadSettings()
         {
             // Add any controls you want to save the state of
-            xmlSettings.AddControlSetting(textBox1.Name, textBox1);
+            xmlSettings.AddControlSetting(UFHT_EXE_PATH.Name, UFHT_EXE_PATH);
 
             if (File.Exists(settingsFile))
             {
@@ -245,20 +209,26 @@ namespace ACT_Plugin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            testWindow.Visibility = testWindow.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
-
-            //StartUFHT_Program();
+            //testWindow.Visibility = testWindow.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void StartUFHT_Program()
         {
+
+            //ADD A CHECK FOR UFHT EXE PATH exists, etc.
+
             Process process = new Process();
             // Configure the process using the StartInfo properties.
-            process.StartInfo.FileName = "\"C:\\Users\\William\\Desktop\\ufht.v1.2.5\\ufht-UI.exe\"";
+            process.StartInfo.FileName = this.UFHT_EXE_PATH.Text;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             process.Start();
             //process.WaitForExit();// Waits here for the process to exit.
+        }
+
+        private void UFHT_EXE_PATH_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

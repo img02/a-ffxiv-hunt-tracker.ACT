@@ -14,9 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using untitled_ffxiv_hunt_tracker;
-using untitled_ffxiv_hunt_tracker.Memory;
-using untitled_ffxiv_hunt_tracker.ViewModels;
 
 namespace ACT_Plugin
 {
@@ -25,19 +22,19 @@ namespace ACT_Plugin
     /// </summary>
     public partial class UserControl1 : UserControl
     {
-        private Session _session;
+        //private Session _session;
 
         public UserControl1()
         {
 
             InitializeComponent();
 
-            _session = Program.CreateSession(60);
+            /*_session = Program.CreateSession(60);
            //_session.Start(new CancellationTokenSource());
 
             Thread.Sleep(3000);
 
-            TheText.Text = _session.CurrentPlayer.Name;
+            TheText.Text = _session.CurrentPlayer.Name;*/
         }
     }
 }
