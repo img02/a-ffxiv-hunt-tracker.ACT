@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -146,19 +144,19 @@ namespace UFHT_Plugin.UserControls
                     {
                         case "A":
                             mobIcon = new Image
-                                {Source = _mobIconA, Name = cleanedName, Height = iconSize, Width = iconSize,};
+                            { Source = _mobIconA, Name = cleanedName, Height = iconSize, Width = iconSize, };
                             break;
                         case "S":
                             new Image
-                                {Source = _mobIconS, Name = cleanedName, Height = iconSize, Width = iconSize};
+                            { Source = _mobIconS, Name = cleanedName, Height = iconSize, Width = iconSize };
                             break;
                         case "SS":
                             new Image
-                                {Source = _mobIconSS, Name = cleanedName, Height = iconSize, Width = iconSize};
+                            { Source = _mobIconSS, Name = cleanedName, Height = iconSize, Width = iconSize };
                             break;
                         default: //B
                             new Image
-                                {Source = _mobIconB, Name = cleanedName, Height = iconSize, Width = iconSize};
+                            { Source = _mobIconB, Name = cleanedName, Height = iconSize, Width = iconSize };
                             break;
                     }
 
@@ -345,7 +343,7 @@ namespace UFHT_Plugin.UserControls
             StringBuilder sb = new StringBuilder();
             foreach (char c in str)
             {
-                if ( (c >= '0' &&  c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
                 {
                     sb.Append(c);
                 }
@@ -395,7 +393,7 @@ namespace UFHT_Plugin.UserControls
             textBlock.Text = m.ToString();
 
         }
-        
+
         private int GetZIndex(string rank)
         {
             switch (rank)
@@ -406,7 +404,7 @@ namespace UFHT_Plugin.UserControls
                     return 2;
                 case "S":
                     return 3;
-                default : //SS
+                default: //SS
                     return 4;
             }
         }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -164,7 +162,7 @@ namespace UFHT_Plugin.HotkeyCommands
 
             return (k, m);
         }
-        
+
         public static uint ConvertModifier(KeyGesture keyGesture)
         {
             switch (keyGesture.Modifiers)

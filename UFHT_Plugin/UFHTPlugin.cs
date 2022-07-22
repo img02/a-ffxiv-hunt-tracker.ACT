@@ -1,29 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+﻿using Advanced_Combat_Tracker;
+using System;
 using System.Diagnostics;
-using System.Text;
-using System.Windows.Forms;
-using Advanced_Combat_Tracker;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 using System.Xml;
-using UFHT_Plugin;
-using Application = System.Windows.Application;
 
 [assembly: AssemblyTitle("UFHT Plugin")]
-[assembly: AssemblyDescription("UFHT TEST")]
+[assembly: AssemblyDescription("Plugin for UFHT hunt tracker")]
 [assembly: AssemblyCompany("idkwhatimdoing")]
-[assembly: AssemblyVersion("6.9.4.20")]
+[assembly: AssemblyCopyright("https://github.com/imaginary-png/a-ffxiv-hunt-tracker.ACT")]
+[assembly: AssemblyVersion("1.0.0")]
 
-namespace ACT_Plugin
+namespace UFHT_Plugin
 {
-    public class PluginSample : UserControl, IActPluginV1
+    public class UFHTPlugin : UserControl, IActPluginV1
     {
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -111,7 +104,7 @@ namespace ACT_Plugin
         #endregion
 
 
-        public PluginSample()
+        public UFHTPlugin()
         {
             InitializeComponent();
         }
@@ -214,16 +207,13 @@ namespace ACT_Plugin
 
         private void StartUFHT_Program()
         {
+            //ADD A CHECK FOR UFHT EXE PATH exists, etc. if I can be bothered.
 
-            //ADD A CHECK FOR UFHT EXE PATH exists, etc.
-
-            Process process = new Process();
-            // Configure the process using the StartInfo properties.
+            var process = new Process();
             process.StartInfo.FileName = this.UFHT_EXE_PATH.Text;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             process.Start();
-            //process.WaitForExit();// Waits here for the process to exit.
         }
 
         private void UFHT_EXE_PATH_TextChanged(object sender, EventArgs e)

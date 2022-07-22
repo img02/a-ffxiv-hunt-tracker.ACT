@@ -181,7 +181,7 @@ namespace UFHT_Plugin.SettingsWindow
             }
 
 
-            if (modifier == ModifierKeys.Alt || modifier ==  ModifierKeys.Control || modifier == ModifierKeys.Shift) //use bool instead?
+            if (modifier == ModifierKeys.Alt || modifier == ModifierKeys.Control || modifier == ModifierKeys.Shift) //use bool instead?
             {
                 SetRelevantModifierKey(lbl.Name, modifier);
 

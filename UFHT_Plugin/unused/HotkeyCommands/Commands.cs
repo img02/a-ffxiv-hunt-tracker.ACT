@@ -66,7 +66,7 @@ namespace UFHT_Plugin.HotkeyCommands
                 DefaultSettingsWindowKeyGesture
             }
         );
-        
+
         public static readonly RoutedUICommand ClickThruToggle = new RoutedUICommand
         (
             "ClickThru Toggle",

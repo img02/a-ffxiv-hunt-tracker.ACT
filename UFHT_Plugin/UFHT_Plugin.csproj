@@ -84,7 +84,7 @@
     <Compile Include="unused\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PluginSample.cs">
+    <Compile Include="UFHTPlugin.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="unused\SettingsWindow\HotkeyWindow.xaml.cs">
@@ -106,8 +106,8 @@
     <Compile Include="unused\UserSettings\SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="PluginSample.resx">
-      <DependentUpon>PluginSample.cs</DependentUpon>
+    <EmbeddedResource Include="UFHTPlugin.resx">
+      <DependentUpon>UFHTPlugin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -4,14 +4,11 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using UFHT_Plugin.HotkeyCommands;
 using UFHT_Plugin.UserControls;
 using UFHT_Plugin.UserControls.InfoSection;
@@ -97,16 +94,16 @@ namespace UFHT_Plugin
 
                 Dispatcher.Invoke(() =>
                  {
-                   _listSectionMain = new InfoSectionControl(_session, _nearbyMobs);
-                   _session.CurrentNearbyMobs.CollectionChanged += CurrentNearbyMobs_CollectionChanged;
+                     _listSectionMain = new InfoSectionControl(_session, _nearbyMobs);
+                     _session.CurrentNearbyMobs.CollectionChanged += CurrentNearbyMobs_CollectionChanged;
 
-                   _mainMap = new MainMapControl(_session, _settingsManager);
+                     _mainMap = new MainMapControl(_session, _settingsManager);
 
-                   MainGrid2.Children.Add(_mainMap);
-                   ListSection.Children.Add(_listSectionMain);
+                     MainGrid2.Children.Add(_mainMap);
+                     ListSection.Children.Add(_listSectionMain);
 
-                   DataContext = _session;
-               });
+                     DataContext = _session;
+                 });
                 _session.Start(ct);
 
             });
@@ -258,9 +255,9 @@ namespace UFHT_Plugin
                 }
 
                 //Application.Current.Resources["PriorityMobTextCoords"] = priorityMob.Coordinates;
-                
-                
-                
+
+
+
 
                 // Trace.WriteLine("updating hp");
                 //  Trace.WriteLine($"{PriorityMobHPP.Content.Equals(priorityMob.HPPercent)} - {PriorityMobHPP.Content} - {HPPasString}");

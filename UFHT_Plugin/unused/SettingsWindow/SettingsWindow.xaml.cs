@@ -74,7 +74,7 @@ namespace UFHT_Plugin.SettingsWindow
             {
                 _settings.RefreshRate = refresh;
             }
-            
+
             if (Double.TryParse(OpacityTextBox.Text, out opacity))
             {
                 _settings.Opacity = opacity / 100.0;

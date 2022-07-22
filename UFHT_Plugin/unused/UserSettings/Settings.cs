@@ -9,7 +9,7 @@ namespace UFHT_Plugin.UserSettings
         [DefaultValue(60)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public int RefreshRate;
-        
+
         [DefaultValue(0.8)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public double Opacity;
