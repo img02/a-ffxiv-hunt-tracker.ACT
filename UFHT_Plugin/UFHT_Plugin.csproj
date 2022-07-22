@@ -44,6 +44,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -62,7 +64,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Sharlayan, Version=7.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -73,37 +74,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="unused\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="unused\AssemblyInfo.cs" />
-    <Compile Include="unused\CustomConverters\FileToBitmapConverter.cs" />
-    <Compile Include="unused\HotkeyCommands\Commands.cs" />
-    <Compile Include="unused\HotkeyCommands\GlobalHotkeyManager.cs" />
-    <Compile Include="unused\HotkeyCommands\Hotkey.cs" />
-    <Compile Include="unused\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UFHTPlugin.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="unused\SettingsWindow\HotkeyWindow.xaml.cs">
-      <DependentUpon>HotkeyWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="unused\SettingsWindow\SettingsWindow.xaml.cs">
-      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="unused\UserControls\InfoSection\InfoSectionControl.xaml.cs">
-      <DependentUpon>InfoSectionControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="unused\UserControls\MapSection\MainMapControl.xaml.cs">
-      <DependentUpon>MainMapControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="unused\UserSettings\Settings.cs" />
-    <Compile Include="unused\UserSettings\SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UFHTPlugin.resx">
@@ -111,47 +87,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="unused\App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="unused\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="unused\SettingsWindow\HotkeyWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="unused\SettingsWindow\SettingsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="unused\UserControls\InfoSection\InfoSectionControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="unused\UserControls\MapSection\MainMapControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="unused\app.manifest" />
-    <None Include="unused\packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="unused\Help.txt" />
-    <Content Include="unused\SS.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\untitled-ffxiv-hunt-tracker\untitled_ffxiv_hunt_tracker.csproj">
-      <Project>{aed17f7e-beb8-4c8d-aba0-23e52d802397}</Project>
-      <Name>untitled_ffxiv_hunt_tracker</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>

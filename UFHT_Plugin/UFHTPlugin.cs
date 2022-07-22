@@ -5,6 +5,8 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -46,29 +48,28 @@ namespace UFHT_Plugin
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.UFHT_EXE_PATH = new System.Windows.Forms.TextBox();
+            this.UFHT_DIR_PATH = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(22, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 20);
+            this.label1.Size = new System.Drawing.Size(123, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "UFHT Exe Path:";
             // 
-            // UFHT_EXE_PATH
+            // UFHT_DIR_PATH
             // 
-            this.UFHT_EXE_PATH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UFHT_EXE_PATH.Location = new System.Drawing.Point(26, 47);
-            this.UFHT_EXE_PATH.Name = "UFHT_EXE_PATH";
-            this.UFHT_EXE_PATH.Size = new System.Drawing.Size(431, 26);
-            this.UFHT_EXE_PATH.TabIndex = 1;
-            this.UFHT_EXE_PATH.Text = "Shift + Right Click -> Copy as Path, and paste here";
-            this.UFHT_EXE_PATH.TextChanged += new System.EventHandler(this.UFHT_EXE_PATH_TextChanged);
+            this.UFHT_DIR_PATH.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.UFHT_DIR_PATH.Location = new System.Drawing.Point(26, 47);
+            this.UFHT_DIR_PATH.Name = "UFHT_DIR_PATH";
+            this.UFHT_DIR_PATH.Size = new System.Drawing.Size(431, 23);
+            this.UFHT_DIR_PATH.TabIndex = 1;
+            this.UFHT_DIR_PATH.Text = "Paste the folder directory of ufht-UI.exe here";
             // 
             // button1
             // 
@@ -80,14 +81,14 @@ namespace UFHT_Plugin
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // PluginSample
+            // UFHTPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.UFHT_EXE_PATH);
+            this.Controls.Add(this.UFHT_DIR_PATH);
             this.Controls.Add(this.label1);
-            this.Name = "PluginSample";
+            this.Name = "UFHTPlugin";
             this.Size = new System.Drawing.Size(686, 384);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -96,7 +97,7 @@ namespace UFHT_Plugin
 
         #endregion
 
-        private TextBox UFHT_EXE_PATH;
+        private TextBox UFHT_DIR_PATH;
         private Button button1;
         private System.Windows.Forms.Label label1;
 
@@ -139,7 +140,7 @@ namespace UFHT_Plugin
                 StartUFHT_Program();
             }
 
-            Debug.WriteLine(logInfo.logLine);
+            //Debug.WriteLine(logInfo.logLine);
         }
 
         public void DeInitPlugin()
@@ -155,7 +156,7 @@ namespace UFHT_Plugin
         void LoadSettings()
         {
             // Add any controls you want to save the state of
-            xmlSettings.AddControlSetting(UFHT_EXE_PATH.Name, UFHT_EXE_PATH);
+            xmlSettings.AddControlSetting(UFHT_DIR_PATH.Name, UFHT_DIR_PATH);
 
             if (File.Exists(settingsFile))
             {
@@ -201,7 +202,7 @@ namespace UFHT_Plugin
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {   
             //testWindow.Visibility = testWindow.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
 
@@ -209,16 +210,27 @@ namespace UFHT_Plugin
         {
             //ADD A CHECK FOR UFHT EXE PATH exists, etc. if I can be bothered.
 
-            var process = new Process();
-            process.StartInfo.FileName = this.UFHT_EXE_PATH.Text;
-            process.StartInfo.UseShellExecute = false;
+            Process process = new Process();
+            process.StartInfo.FileName = this.UFHT_DIR_PATH.Text + "\\ufht-UI.exe";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            process.StartInfo.WorkingDirectory = UFHT_DIR_PATH.Text;
+
+            /*process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.RedirectStandardOutput = true;*/
+            
             process.Start();
-        }
+            
+            /*
+            Thread.Sleep(500);
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
 
-        private void UFHT_EXE_PATH_TextChanged(object sender, EventArgs e)
-        {
-
+            Debug.WriteLine(output);
+            Debug.WriteLine("VVVVVVVVVVVV\n");
+            Debug.WriteLine(error);
+            Debug.WriteLine("^^^^^^^^^^^^^\n");*/
         }
+        
     }
 }
