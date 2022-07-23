@@ -23,6 +23,7 @@ Requires Error Message logging to be enabled.
 
 This can be enabled via the cogwheel on the bottom-right of the chatbox -> General -> Announcements -> Error Messages  
 
+![How To Enable Error Message Logging](https://i.imgur.com/Ci9jIqc.png)
 
 ### ToDo
   Maybe remake as a proper plugin, if there is any demand.  
