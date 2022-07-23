@@ -53,6 +53,8 @@ namespace UFHT_Plugin
             this.button1 = new System.Windows.Forms.Button();
             this.usageInformation = new System.Windows.Forms.Label();
             this.gitHubLink = new System.Windows.Forms.LinkLabel();
+            this.requirementLabel = new System.Windows.Forms.Label();
+            this.ufhtLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -112,10 +114,36 @@ namespace UFHT_Plugin
             this.gitHubLink.Text = "GitHub";
             this.gitHubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.gitHubLink_LinkClicked);
             // 
+            // requirementLabel
+            // 
+            this.requirementLabel.AccessibleDescription = "Requires UFHT program";
+            this.requirementLabel.AccessibleName = "Requirements";
+            this.requirementLabel.AutoSize = true;
+            this.requirementLabel.Location = new System.Drawing.Point(26, 328);
+            this.requirementLabel.Name = "requirementLabel";
+            this.requirementLabel.Size = new System.Drawing.Size(149, 13);
+            this.requirementLabel.TabIndex = 5;
+            this.requirementLabel.Text = "Requires the UFHT program - ";
+            // 
+            // ufhtLink
+            // 
+            this.ufhtLink.AccessibleDescription = "Link to the UFHT GitHub page";
+            this.ufhtLink.AccessibleName = "UFHT GitHub Link";
+            this.ufhtLink.AutoSize = true;
+            this.ufhtLink.Location = new System.Drawing.Point(172, 328);
+            this.ufhtLink.Name = "ufhtLink";
+            this.ufhtLink.Size = new System.Drawing.Size(40, 13);
+            this.ufhtLink.TabIndex = 6;
+            this.ufhtLink.TabStop = true;
+            this.ufhtLink.Text = "GitHub";
+            this.ufhtLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ufhtLink_LinkClicked);
+            // 
             // UFHTPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ufhtLink);
+            this.Controls.Add(this.requirementLabel);
             this.Controls.Add(this.gitHubLink);
             this.Controls.Add(this.usageInformation);
             this.Controls.Add(this.button1);
@@ -134,6 +162,8 @@ namespace UFHT_Plugin
         private Button button1;
         private Label usageInformation;
         private LinkLabel gitHubLink;
+        private Label requirementLabel;
+        private LinkLabel ufhtLink;
         private System.Windows.Forms.Label label1;
 
 
@@ -261,6 +291,11 @@ namespace UFHT_Plugin
         private void gitHubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/imaginary-png/a-ffxiv-hunt-tracker.ACT");
+        }
+
+        private void ufhtLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/imaginary-png/a-ffxiv-hunt-tracker");
         }
     }
 }
