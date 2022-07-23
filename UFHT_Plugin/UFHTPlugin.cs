@@ -12,7 +12,7 @@ using System.Xml;
 
 [assembly: AssemblyTitle("UFHT Plugin")]
 [assembly: AssemblyDescription("Plugin for UFHT hunt tracker")]
-[assembly: AssemblyCompany("idkwhatimdoing")]
+[assembly: AssemblyCompany("https://github.com/imaginary-png/a-ffxiv-hunt-tracker.ACT")]
 [assembly: AssemblyCopyright("https://github.com/imaginary-png/a-ffxiv-hunt-tracker.ACT")]
 [assembly: AssemblyVersion("1.0.0")]
 
