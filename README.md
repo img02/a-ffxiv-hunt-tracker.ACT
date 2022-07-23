@@ -9,7 +9,8 @@ Requires: https://github.com/imaginary-png/a-ffxiv-hunt-tracker
 
 # Installation
 
-ADD INSTALLATION INSTRUCTIONS HERE
+Download the release, unzip (may have to right click -> properties -> unblock first)  
+Put dll in your ACT plugins folder, launch ACT and add the plugin.
 
 
 # How to use
