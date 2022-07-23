@@ -15,7 +15,7 @@ Put dll in your ACT plugins folder, launch ACT and add the plugin.
 
 # How to use
 
-Add your directory via the ACT plugin tab 
+Add your UFHT directory path via the ACT plugin tab 
 
 Open UFHT by typing '/ufht' into the chatlog.
 
