@@ -47,6 +47,7 @@ namespace UFHT_Plugin
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UFHTPlugin));
             this.label1 = new System.Windows.Forms.Label();
             this.UFHT_DIR_PATH = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -94,11 +95,9 @@ namespace UFHT_Plugin
             this.usageInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usageInformation.Location = new System.Drawing.Point(26, 114);
             this.usageInformation.Name = "usageInformation";
-            this.usageInformation.Size = new System.Drawing.Size(676, 68);
+            this.usageInformation.Size = new System.Drawing.Size(748, 68);
             this.usageInformation.TabIndex = 3;
-            this.usageInformation.Text = "Type \'/ufht\' into chat to open UFHT.\r\n\r\nRequires chat log error messages to be en" +
-    "abled.\r\nEnable via the cog on the bottom right of the chat box -> Log Filters ->" +
-    " Announcements -> Error Messages\r\n";
+            this.usageInformation.Text = resources.GetString("usageInformation.Text");
             // 
             // gitHubLink
             // 
@@ -166,7 +165,7 @@ namespace UFHT_Plugin
         private void OFormActMain_OnLogLineRead(bool isImport, LogLineEventArgs logInfo)
         {
 
-            var rg = new Regex(@"^\[.*\] ChatLog 00:003C::The command /ufht does not exist.");
+            var rg = new Regex(@"^\[.*\] ChatLog 00:003C::The command ((?i)\/ufht) does not exist.");
 
             if (rg.IsMatch(logInfo.logLine))
             {
@@ -244,13 +243,18 @@ namespace UFHT_Plugin
 
         private void StartUFHT_Program()
         {
-            //ADD A CHECK FOR UFHT EXE PATH exists, etc. if I can be bothered.
+            if (!File.Exists(UFHT_DIR_PATH.Text + "\\ufht-UI.exe"))
+            {
+                MessageBox.Show("Unable to find ufht-UI.exe. Please recheck you directory path", "UFHT - exe not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Process process = new Process();
             process.StartInfo.FileName = this.UFHT_DIR_PATH.Text + "\\ufht-UI.exe";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             process.StartInfo.WorkingDirectory = UFHT_DIR_PATH.Text;
             process.Start();
+            
             
         }
 
