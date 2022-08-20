@@ -9,12 +9,13 @@ Requires: https://github.com/imaginary-png/a-ffxiv-hunt-tracker
 
 # Installation
 
-ADD INSTALLATION INSTRUCTIONS HERE
+Download the release, unzip (may have to right click -> properties -> unblock first)  
+Put dll in your ACT plugins folder, launch ACT and add the plugin.
 
 
 # How to use
 
-Add your directory via the ACT plugin tab 
+Add your UFHT directory path via the ACT plugin tab 
 
 Open UFHT by typing '/ufht' into the chatlog.
 
@@ -22,6 +23,7 @@ Requires Error Message logging to be enabled.
 
 This can be enabled via the cogwheel on the bottom-right of the chatbox -> General -> Announcements -> Error Messages  
 
+![How To Enable Error Message Logging](https://i.imgur.com/Ci9jIqc.png)
 
 ### ToDo
   Maybe remake as a proper plugin, if there is any demand.  
