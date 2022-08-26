@@ -1,4 +1,8 @@
 # a-ffxiv-hunt-tracker.ACT
+
+##### *I've made a better version of a hunt radar that is available via [Xivlauncher / Dalamud plugins](https://github.com/goatcorp/FFXIVQuickLauncher) - [HuntHelper](https://github.com/imaginary-png/HuntHelper)  
+
+
 ACT Plugin for UFHT(a-ffxiv-hunt-tracker)
 
 <b>ALL IT DOES AT THE MOMENT IS ALLOW YOU TO OPEN UFHT.EXE VIA IN-GAME COMMAND.</b>
